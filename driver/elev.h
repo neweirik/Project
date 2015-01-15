@@ -20,12 +20,21 @@ int elev_init(void);
 
 
 /**
-  Sets the speed of the elevator.
-  @param speed New speed of elevator. Positive values denote upward movement
-    and vice versa. Set speed to 0 to stop the elevator. From -300 to 300 gives
-    sensible speeds. If the speed is too high, the hardware will emit a constant tone.
+  Motor direction for function elev_set_motor_direction().
 */
-void elev_set_speed(int speed);
+typedef enum tag_elev_motor_direction { 
+    DIRN_DOWN = -1,
+    DIRN_STOP = 0,
+    DIRN_UP = 1
+} elev_motor_direction_t;
+
+
+
+/**
+  Sets the motor direction of the elevator.
+  @param dirn New direction of the elevator.
+*/
+void elev_set_motor_direction(elev_motor_direction_t dirn);
 
 
 
