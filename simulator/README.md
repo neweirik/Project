@@ -35,14 +35,72 @@ The simulated elevator is spawned by calling `io_init(ElevatorType)` with `ET_si
  
 Keyboard controls
 -----------------
-QWE, SDF, and ZXCV control the Up, Down and Command buttons.  
-T controls the stop button, G toggles the obstruction switch.  
-(A keypress must be followed by pressing Enter.)  
+
+<table>
+    <thead>
+        <tr>
+            <th align="left" colspan="5">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><strong>Button \ Floor</strong></td>
+            <td align="center"><em>1</em></td>
+            <td align="center"><em>2</em></td>
+            <td align="center"><em>3</em></td>
+            <td align="center"><em>4</em></td>
+        </tr>
+        <tr>
+            <td align="right"><em>up</em></td>
+            <td align="center">Q</td>
+            <td align="center">W</td>
+            <td align="center">E</td>
+            <td align="center"></td> 
+       </tr>
+       <tr>
+            <td align="right"><em>down</em></td>
+            <td align="center"></td>
+            <td align="center">S</td>
+            <td align="center">D</td>
+            <td align="center">F</td>
+        </tr>
+        <tr>
+            <td align="right"><em>command</em></td>
+            <td align="center">Z</td>
+            <td align="center">X</td>
+            <td align="center">C</td>
+            <td align="center">V</td>
+        </tr>
+        <tr>
+            <td align="left"colspan="5"><strong>Other</strong></td>
+        </tr>
+        <tr>
+            <td align="right"><em>stop</em></td>
+            <td align="left" colspan="4">T</td>
+        </tr>
+        <tr>
+            <td align="right"><em>obstruction</em></td>
+            <td align="left" colspan="4">G</td>
+        </tr>
+    </tbody>
+</table>
+
+
+A keypress must be followed by pressing Enter.  
 
 The duration of a keypress is set in `simulator.con`.
 
 Display
 -------
+
+```
++---------------+ +----+--------------+---------+
+|   #           | |  up| 0* 1  2      | obstr:^ |
+| 0 - 1*- 2 - 3 | |down|    1  2* 3*  | door:   |
+|      <-       | | cmd| 0  1  2* 3   | stop:   |
++---------------+ +----+--------------+------103+
+```
+
 The ascii-art-style display is updated whenever the state of the simulated elevator is updated.
 
 A print count (number of times a new state is printed) is shown in the lower right corner of the display. Try to avoid writing to the (simulated) hardware if nothing has happened, as writing to the screen is painfully slow. A jump of 20-50 in the printcount is fine (even expected), but if there are larger jumps or there is a continous upward count, it is time to re-evaluate some design choices.
