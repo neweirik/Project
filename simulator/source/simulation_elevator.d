@@ -35,8 +35,16 @@ extern (C) {
                 "comPortFromDisplay",           &comPortFromDisplay,
             );
         } catch(Exception e){
-            writeln("Unable to load ElevatorConfig: ", e.msg, "\n Using defaults");
+            writeln("Unable to load ElevatorConfig: ", e.msg, "\n  Using defaults");
         }
+        writeln("Current config:",
+                "\n  travelTimeBetweenFloors_ms: ",     travelTimeBetweenFloors_ms,
+                "\n  travelTimePassingFloor_ms: ",      travelTimePassingFloor_ms,
+                "\n  btnDepressedTime_ms: ",            btnDepressedTime_ms,
+                "\n  comPortToDisplay: ",               comPortToDisplay,
+                "\n  comPortFromDisplay: ",             comPortFromDisplay,
+                "\n"
+        );
         
         // --- INIT --- //
         simulationLoop_thread = spawn( &thr_simulationLoop );

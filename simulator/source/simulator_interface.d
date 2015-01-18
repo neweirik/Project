@@ -21,8 +21,13 @@ shared static this(){
             "comPortFromDisplay",   &comPortFromDisplay,
         );
     } catch(Exception e){
-        writeln("Unable to load ElevatorConfig: ", e.msg, "\n Using defaults");
+        writeln("Unable to load ElevatorConfig: ", e.msg, "\n  Using defaults");
     }
+    writeln("Current config:",
+            "\n  comPortToDisplay: ",       comPortToDisplay,
+            "\n  comPortFromDisplay: ",     comPortFromDisplay,
+            "\n"
+    );
 }
 
 
@@ -60,7 +65,7 @@ void main(){
         }
     }
     
-    cls;    
+    
     writeln(q{
 QWE, SDF, and ZXCV control the Up, Down and Command buttons.  
 T controls the stop button, G toggles the obstruction switch.  
